@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LectorHuellasModelStoreContainer" CdmEntityContainer="LectorHuellasEntities">
+    <EntitySetMapping Name="Personal">
+      <EntityTypeMapping TypeName="LectorHuellasModel.Personal">
+        <MappingFragment StoreEntitySet="Personal">
+          <ScalarProperty Name="Exp" ColumnName="Exp" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+          <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+          <ScalarProperty Name="CarneId" ColumnName="CarneId" />
+          <ScalarProperty Name="Fotolector" ColumnName="Fotolector" />
+          <ScalarProperty Name="Raza" ColumnName="Raza" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonalImagen">
+      <EntityTypeMapping TypeName="LectorHuellasModel.PersonalImagen">
+        <MappingFragment StoreEntitySet="PersonalImagen">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+          <ScalarProperty Name="Solapin" ColumnName="Solapin" />
+          <ScalarProperty Name="NombreDedo" ColumnName="NombreDedo" />
+          <ScalarProperty Name="DirImagen" ColumnName="DirImagen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegistroES">
+      <EntityTypeMapping TypeName="LectorHuellasModel.RegistroES">
+        <MappingFragment StoreEntitySet="RegistroES">
+          <ScalarProperty Name="Exp" ColumnName="Exp" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegistroESpejo">
+      <EntityTypeMapping TypeName="LectorHuellasModel.RegistroESpejo">
+        <MappingFragment StoreEntitySet="RegistroESpejo">
+          <ScalarProperty Name="Exp" ColumnName="Exp" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

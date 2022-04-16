@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LectorHuellasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Personal">
+    <Key>
+      <PropertyRef Name="Exp" />
+    </Key>
+    <Property Name="Exp" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CarneId" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Fotolector" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Raza" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PersonalImagen" Relationship="Self.FK_Solapin" FromRole="Personal" ToRole="PersonalImagen" />
+  </EntityType>
+  <EntityType Name="PersonalImagen">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Solapin" Type="Int32" Nullable="false" />
+    <Property Name="NombreDedo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DirImagen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Personal" Relationship="Self.FK_Solapin" FromRole="PersonalImagen" ToRole="Personal" />
+  </EntityType>
+  <EntityType Name="RegistroES">
+    <Key>
+      <PropertyRef Name="Exp" />
+      <PropertyRef Name="Fecha" />
+    </Key>
+    <Property Name="Exp" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tipo" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IP" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="RegistroESpejo">
+    <Key>
+      <PropertyRef Name="Exp" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Tipo" />
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Exp" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Tipo" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IP" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <Association Name="FK_Solapin">
+    <End Role="Personal" Type="Self.Personal" Multiplicity="1" />
+    <End Role="PersonalImagen" Type="Self.PersonalImagen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personal">
+        <PropertyRef Name="Exp" />
+      </Principal>
+      <Dependent Role="PersonalImagen">
+        <PropertyRef Name="Solapin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LectorHuellasEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Personal" EntityType="Self.Personal" />
+    <EntitySet Name="PersonalImagen" EntityType="Self.PersonalImagen" />
+    <EntitySet Name="RegistroES" EntityType="Self.RegistroES" />
+    <EntitySet Name="RegistroESpejo" EntityType="Self.RegistroESpejo" />
+    <AssociationSet Name="FK_Solapin" Association="Self.FK_Solapin">
+      <End Role="Personal" EntitySet="Personal" />
+      <End Role="PersonalImagen" EntitySet="PersonalImagen" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

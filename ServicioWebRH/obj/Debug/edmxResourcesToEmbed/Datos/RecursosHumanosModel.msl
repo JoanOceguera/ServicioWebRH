@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RecursosHumanosModelStoreContainer" CdmEntityContainer="RecursosHumanosEntities">
+    <EntitySetMapping Name="Agrupaciones">
+      <EntityTypeMapping TypeName="RecursosHumanosModel.Agrupaciones">
+        <MappingFragment StoreEntitySet="Agrupaciones">
+          <ScalarProperty Name="Id_Agrup" ColumnName="Id_Agrup" />
+          <ScalarProperty Name="Nom_Agrup" ColumnName="Nom_Agrup" />
+          <ScalarProperty Name="BaseDatos" ColumnName="BaseDatos" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="Produce" ColumnName="Produce" />
+          <ScalarProperty Name="Id_Scta" ColumnName="Id_Scta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COcupacional">
+      <EntityTypeMapping TypeName="RecursosHumanosModel.COcupacional">
+        <MappingFragment StoreEntitySet="COcupacional">
+          <ScalarProperty Name="Cod_CO" ColumnName="Cod_CO" />
+          <ScalarProperty Name="Nomb_CO" ColumnName="Nomb_CO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departamentos">
+      <EntityTypeMapping TypeName="RecursosHumanosModel.Departamentos">
+        <MappingFragment StoreEntitySet="Departamentos">
+          <ScalarProperty Name="Id_Dpto" ColumnName="Id_Dpto" />
+          <ScalarProperty Name="Id_Agrup" ColumnName="Id_Agrup" />
+          <ScalarProperty Name="Nom_Dpto" ColumnName="Nom_Dpto" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personal">
+      <EntityTypeMapping TypeName="RecursosHumanosModel.PersonalRH">
+        <MappingFragment StoreEntitySet="Personal">
+          <ScalarProperty Name="Exp" ColumnName="Exp" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+          <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+          <ScalarProperty Name="CarneId" ColumnName="CarneId" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Mpio" ColumnName="Mpio" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Clasificacion" ColumnName="Clasificacion" />
+          <ScalarProperty Name="Profesion" ColumnName="Profesion" />
+          <ScalarProperty Name="CategOcup" ColumnName="CategOcup" />
+          <ScalarProperty Name="CategDoc" ColumnName="CategDoc" />
+          <ScalarProperty Name="CategCient" ColumnName="CategCient" />
+          <ScalarProperty Name="CategTecno" ColumnName="CategTecno" />
+          <ScalarProperty Name="GradoCient" ColumnName="GradoCient" />
+          <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
+          <ScalarProperty Name="CategBTecno" ColumnName="CategBTecno" />
+          <ScalarProperty Name="Militancia" ColumnName="Militancia" />
+          <ScalarProperty Name="Curriculum" ColumnName="Curriculum" />
+          <ScalarProperty Name="IdPlaza" ColumnName="IdPlaza" />
+          <ScalarProperty Name="Alta" ColumnName="Alta" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+          <ScalarProperty Name="Contrata" ColumnName="Contrata" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="Antiguedad" ColumnName="Antiguedad" />
+          <ScalarProperty Name="ContabilidadC" ColumnName="ContabilidadC" />
+          <ScalarProperty Name="Dirigente" ColumnName="Dirigente" />
+          <ScalarProperty Name="GCientifico" ColumnName="GCientifico" />
+          <ScalarProperty Name="GElectrogeno" ColumnName="GElectrogeno" />
+          <ScalarProperty Name="Fotolector" ColumnName="Fotolector" />
+          <ScalarProperty Name="EstudiosTerminados" ColumnName="EstudiosTerminados" />
+          <ScalarProperty Name="Raza" ColumnName="Raza" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Plantilla">
+      <EntityTypeMapping TypeName="RecursosHumanosModel.Plantilla">
+        <MappingFragment StoreEntitySet="Plantilla">
+          <ScalarProperty Name="Cod_Plaza" ColumnName="Cod_Plaza" />
+          <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+          <ScalarProperty Name="GSalarial" ColumnName="GSalarial" />
+          <ScalarProperty Name="Basico" ColumnName="Basico" />
+          <ScalarProperty Name="Condiciones" ColumnName="Condiciones" />
+          <ScalarProperty Name="Plus" ColumnName="Plus" />
+          <ScalarProperty Name="Resolucion" ColumnName="Resolucion" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+          <ScalarProperty Name="MNomina" ColumnName="MNomina" />
+          <ScalarProperty Name="Vacante" ColumnName="Vacante" />
+          <ScalarProperty Name="CTecnica" ColumnName="CTecnica" />
+          <ScalarProperty Name="EspecialistaP" ColumnName="EspecialistaP" />
+          <ScalarProperty Name="CTecnologica" ColumnName="CTecnologica" />
+          <ScalarProperty Name="RCITMA" ColumnName="RCITMA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BajasPers">
+      <EntityTypeMapping TypeName="RecursosHumanosModel.BajasPers">
+        <MappingFragment StoreEntitySet="BajasPers">
+          <ScalarProperty Name="Exp" ColumnName="Exp" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+          <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+          <ScalarProperty Name="CarneId" ColumnName="CarneId" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Mpio" ColumnName="Mpio" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Clasificacion" ColumnName="Clasificacion" />
+          <ScalarProperty Name="Profesion" ColumnName="Profesion" />
+          <ScalarProperty Name="CategOcup" ColumnName="CategOcup" />
+          <ScalarProperty Name="CategDoc" ColumnName="CategDoc" />
+          <ScalarProperty Name="CategCient" ColumnName="CategCient" />
+          <ScalarProperty Name="CategTecno" ColumnName="CategTecno" />
+          <ScalarProperty Name="GradoCient" ColumnName="GradoCient" />
+          <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
+          <ScalarProperty Name="CategBTecno" ColumnName="CategBTecno" />
+          <ScalarProperty Name="Militancia" ColumnName="Militancia" />
+          <ScalarProperty Name="Baja" ColumnName="Baja" />
+          <ScalarProperty Name="Alta" ColumnName="Alta" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+          <ScalarProperty Name="IdPlaza" ColumnName="IdPlaza" />
+          <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+          <ScalarProperty Name="Contrata" ColumnName="Contrata" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="Antiguedad" ColumnName="Antiguedad" />
+          <ScalarProperty Name="ContabilidadC" ColumnName="ContabilidadC" />
+          <ScalarProperty Name="Dirigente" ColumnName="Dirigente" />
+          <ScalarProperty Name="GCientifico" ColumnName="GCientifico" />
+          <ScalarProperty Name="Gelectrogeno" ColumnName="Gelectrogeno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GCientifico">
+      <EntityTypeMapping TypeName="RecursosHumanosModel.GCientifico">
+        <MappingFragment StoreEntitySet="GCientifico">
+          <ScalarProperty Name="Cuantia" ColumnName="Cuantia" />
+          <ScalarProperty Name="Des_GC" ColumnName="Des_GC" />
+          <ScalarProperty Name="Cod_GC" ColumnName="Cod_GC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Plazas">
+      <EntityTypeMapping TypeName="RecursosHumanosModel.Plazas">
+        <MappingFragment StoreEntitySet="Plazas">
+          <ScalarProperty Name="Nom_Ocup" ColumnName="Nom_Ocup" />
+          <ScalarProperty Name="Id_Ocup" ColumnName="Id_Ocup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BajaPlantilla">
+      <EntityTypeMapping TypeName="RecursosHumanosModel.BajaPlantilla">
+        <MappingFragment StoreEntitySet="BajaPlantilla">
+          <ScalarProperty Name="RCITMA" ColumnName="RCITMA" />
+          <ScalarProperty Name="CTecnologica" ColumnName="CTecnologica" />
+          <ScalarProperty Name="EspecialistaP" ColumnName="EspecialistaP" />
+          <ScalarProperty Name="CTecnica" ColumnName="CTecnica" />
+          <ScalarProperty Name="MNomina" ColumnName="MNomina" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+          <ScalarProperty Name="Resolucion" ColumnName="Resolucion" />
+          <ScalarProperty Name="Plus" ColumnName="Plus" />
+          <ScalarProperty Name="Condiciones" ColumnName="Condiciones" />
+          <ScalarProperty Name="Basico" ColumnName="Basico" />
+          <ScalarProperty Name="GSalarial" ColumnName="GSalarial" />
+          <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+          <ScalarProperty Name="Cod_Plaza" ColumnName="Cod_Plaza" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Municipios">
+      <EntityTypeMapping TypeName="RecursosHumanosModel.Municipios">
+        <MappingFragment StoreEntitySet="Municipios">
+          <ScalarProperty Name="C_Municipio" ColumnName="C_Municipio" />
+          <ScalarProperty Name="Nomb_Mpio" ColumnName="Nomb_Mpio" />
+          <ScalarProperty Name="Cod_Mpio" ColumnName="Cod_Mpio" />
+          <ScalarProperty Name="Id_Prov" ColumnName="Id_Prov" />
+          <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CBiotecnologicas">
+      <EntityTypeMapping TypeName="RecursosHumanosModel.CBiotecnologicas">
+        <MappingFragment StoreEntitySet="CBiotecnologicas">
+          <ScalarProperty Name="Nomb_CBT" ColumnName="Nomb_CBT" />
+          <ScalarProperty Name="Cod_CBT" ColumnName="Cod_CBT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CCientificas">
+      <EntityTypeMapping TypeName="RecursosHumanosModel.CCientificas">
+        <MappingFragment StoreEntitySet="CCientificas">
+          <ScalarProperty Name="Nomb_CC" ColumnName="Nomb_CC" />
+          <ScalarProperty Name="Cod_CC" ColumnName="Cod_CC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CDocente">
+      <EntityTypeMapping TypeName="RecursosHumanosModel.CDocente">
+        <MappingFragment StoreEntitySet="CDocente">
+          <ScalarProperty Name="Nomb_CD" ColumnName="Nomb_CD" />
+          <ScalarProperty Name="Cod_CD" ColumnName="Cod_CD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTecnologicas">
+      <EntityTypeMapping TypeName="RecursosHumanosModel.CTecnologicas">
+        <MappingFragment StoreEntitySet="CTecnologicas">
+          <ScalarProperty Name="Nomb_CT" ColumnName="Nomb_CT" />
+          <ScalarProperty Name="Cod_CT" ColumnName="Cod_CT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

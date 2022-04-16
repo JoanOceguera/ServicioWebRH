@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9117789118554eeabab0401931318352" Name="Diagram1">
+        <EntityTypeShape EntityType="RecursosHumanosModel.Agrupaciones" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.COcupacional" Width="1.5" PointX="7.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.Departamentos" Width="1.5" PointX="0.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.PersonalRH" Width="1.5" PointX="5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.Plantilla" Width="1.5" PointX="2.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.BajasPers" Width="1.5" PointX="9.125" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="RecursosHumanosModel.FK___4__12" ManuallyRouted="false" />
+        <AssociationConnector Association="RecursosHumanosModel.FK_BajasPers_6__28" ManuallyRouted="false" />
+        <AssociationConnector Association="RecursosHumanosModel.FK_Personal_COcupacional" ManuallyRouted="false" />
+        <AssociationConnector Association="RecursosHumanosModel.FKPlantillaDpto" ManuallyRouted="false" />
+        <AssociationConnector Association="RecursosHumanosModel.FK_Personal_Plantilla" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.GCientifico" Width="1.5" PointX="7.125" PointY="2.5" />
+        <AssociationConnector Association="RecursosHumanosModel.FK_BajasPers_7__28" />
+        <AssociationConnector Association="RecursosHumanosModel.FK_Personal_GCientifico" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.Plazas" Width="1.5" PointX="2.875" PointY="5.5" />
+        <AssociationConnector Association="RecursosHumanosModel.FKPlantillaOcup" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.BajaPlantilla" Width="1.5" PointX="4.875" PointY="11.25" />
+        <AssociationConnector Association="RecursosHumanosModel.FK_BajasPers_BajaPlantilla" />
+        <AssociationConnector Association="RecursosHumanosModel.FKBajasDpto" />
+        <AssociationConnector Association="RecursosHumanosModel.FKBajasOcupacion" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.Municipios" Width="1.5" PointX="7.125" PointY="12.625" />
+        <AssociationConnector Association="RecursosHumanosModel.FK_BajasPers_1__28" />
+        <AssociationConnector Association="RecursosHumanosModel.FK_Personal_Municipios" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.CBiotecnologicas" Width="1.5" PointX="7.125" PointY="8.625" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.CCientificas" Width="1.5" PointX="7.125" PointY="10.625" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.CDocente" Width="1.5" PointX="7.125" PointY="4.625" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.CTecnologicas" Width="1.5" PointX="7.125" PointY="6.625" />
+        <AssociationConnector Association="RecursosHumanosModel.FK_BajasPers_CBiotecnologicas" />
+        <AssociationConnector Association="RecursosHumanosModel.FK_Personal_CBiotecnologicas" />
+        <AssociationConnector Association="RecursosHumanosModel.FK_BajasPers_4__28" />
+        <AssociationConnector Association="RecursosHumanosModel.FK_Personal_CCientificas" />
+        <AssociationConnector Association="RecursosHumanosModel.FK_BajasPers_5__28" />
+        <AssociationConnector Association="RecursosHumanosModel.FK_Personal_CDocente" />
+        <AssociationConnector Association="RecursosHumanosModel.FK_BajasPers_CTecnologicas" />
+        <AssociationConnector Association="RecursosHumanosModel.FK_Personal_CTecnologicas" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

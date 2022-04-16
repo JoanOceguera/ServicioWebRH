@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LectorHuellasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Personal">
+    <Key>
+      <PropertyRef Name="Exp" />
+    </Key>
+    <Property Name="Exp" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Apellido1" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Apellido2" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="CarneId" Type="char" MaxLength="11" Nullable="false" />
+    <Property Name="Foto" Type="image" />
+    <Property Name="Fotolector" Type="varchar" MaxLength="70" />
+    <Property Name="Raza" Type="nvarchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="PersonalImagen">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Imagen" Type="image" />
+    <Property Name="Solapin" Type="int" Nullable="false" />
+    <Property Name="NombreDedo" Type="nvarchar" MaxLength="50" />
+    <Property Name="DirImagen" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="RegistroES">
+    <Key>
+      <PropertyRef Name="Exp" />
+      <PropertyRef Name="Fecha" />
+    </Key>
+    <Property Name="Exp" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Tipo" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="IP" Type="nchar" MaxLength="15" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'LectorHuellas.dbo.RegistroESpejo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="RegistroESpejo">
+    <Key>
+      <PropertyRef Name="Exp" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Tipo" />
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Exp" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Tipo" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="IP" Type="nchar" MaxLength="15" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Solapin">
+    <End Role="Personal" Type="Self.Personal" Multiplicity="1" />
+    <End Role="PersonalImagen" Type="Self.PersonalImagen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personal">
+        <PropertyRef Name="Exp" />
+      </Principal>
+      <Dependent Role="PersonalImagen">
+        <PropertyRef Name="Solapin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LectorHuellasModelStoreContainer">
+    <EntitySet Name="Personal" EntityType="Self.Personal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PersonalImagen" EntityType="Self.PersonalImagen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegistroES" EntityType="Self.RegistroES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegistroESpejo" EntityType="Self.RegistroESpejo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RegistroESpejo].[Exp] AS [Exp], 
+    [RegistroESpejo].[Fecha] AS [Fecha], 
+    [RegistroESpejo].[Tipo] AS [Tipo], 
+    [RegistroESpejo].[IP] AS [IP], 
+    [RegistroESpejo].[id] AS [id]
+    FROM [dbo].[RegistroESpejo] AS [RegistroESpejo]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Solapin" Association="Self.FK_Solapin">
+      <End Role="Personal" EntitySet="Personal" />
+      <End Role="PersonalImagen" EntitySet="PersonalImagen" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

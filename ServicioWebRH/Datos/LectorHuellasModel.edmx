@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LectorHuellasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Personal">
+          <Key>
+            <PropertyRef Name="Exp" />
+          </Key>
+          <Property Name="Exp" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Apellido1" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Apellido2" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CarneId" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="Foto" Type="image" />
+          <Property Name="Fotolector" Type="varchar" MaxLength="70" />
+          <Property Name="Raza" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="PersonalImagen">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Imagen" Type="image" />
+          <Property Name="Solapin" Type="int" Nullable="false" />
+          <Property Name="NombreDedo" Type="nvarchar" MaxLength="50" />
+          <Property Name="DirImagen" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="RegistroES">
+          <Key>
+            <PropertyRef Name="Exp" />
+            <PropertyRef Name="Fecha" />
+          </Key>
+          <Property Name="Exp" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tipo" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="IP" Type="nchar" MaxLength="15" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'LectorHuellas.dbo.RegistroESpejo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="RegistroESpejo">
+          <Key>
+            <PropertyRef Name="Exp" />
+            <PropertyRef Name="Fecha" />
+            <PropertyRef Name="Tipo" />
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Exp" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Tipo" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="IP" Type="nchar" MaxLength="15" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Solapin">
+          <End Role="Personal" Type="Self.Personal" Multiplicity="1" />
+          <End Role="PersonalImagen" Type="Self.PersonalImagen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal">
+              <PropertyRef Name="Exp" />
+            </Principal>
+            <Dependent Role="PersonalImagen">
+              <PropertyRef Name="Solapin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LectorHuellasModelStoreContainer">
+          <EntitySet Name="Personal" EntityType="Self.Personal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonalImagen" EntityType="Self.PersonalImagen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistroES" EntityType="Self.RegistroES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistroESpejo" EntityType="Self.RegistroESpejo" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RegistroESpejo].[Exp] AS [Exp], 
+    [RegistroESpejo].[Fecha] AS [Fecha], 
+    [RegistroESpejo].[Tipo] AS [Tipo], 
+    [RegistroESpejo].[IP] AS [IP], 
+    [RegistroESpejo].[id] AS [id]
+    FROM [dbo].[RegistroESpejo] AS [RegistroESpejo]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Solapin" Association="Self.FK_Solapin">
+            <End Role="Personal" EntitySet="Personal" />
+            <End Role="PersonalImagen" EntitySet="PersonalImagen" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LectorHuellasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Personal">
+          <Key>
+            <PropertyRef Name="Exp" />
+          </Key>
+          <Property Name="Exp" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CarneId" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fotolector" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Raza" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PersonalImagen" Relationship="Self.FK_Solapin" FromRole="Personal" ToRole="PersonalImagen" />
+        </EntityType>
+        <EntityType Name="PersonalImagen">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Solapin" Type="Int32" Nullable="false" />
+          <Property Name="NombreDedo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DirImagen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Personal" Relationship="Self.FK_Solapin" FromRole="PersonalImagen" ToRole="Personal" />
+        </EntityType>
+        <EntityType Name="RegistroES">
+          <Key>
+            <PropertyRef Name="Exp" />
+            <PropertyRef Name="Fecha" />
+          </Key>
+          <Property Name="Exp" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="IP" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RegistroESpejo">
+          <Key>
+            <PropertyRef Name="Exp" />
+            <PropertyRef Name="Fecha" />
+            <PropertyRef Name="Tipo" />
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Exp" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Tipo" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="IP" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <Association Name="FK_Solapin">
+          <End Role="Personal" Type="Self.Personal" Multiplicity="1" />
+          <End Role="PersonalImagen" Type="Self.PersonalImagen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal">
+              <PropertyRef Name="Exp" />
+            </Principal>
+            <Dependent Role="PersonalImagen">
+              <PropertyRef Name="Solapin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LectorHuellasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Personal" EntityType="Self.Personal" />
+          <EntitySet Name="PersonalImagen" EntityType="Self.PersonalImagen" />
+          <EntitySet Name="RegistroES" EntityType="Self.RegistroES" />
+          <EntitySet Name="RegistroESpejo" EntityType="Self.RegistroESpejo" />
+          <AssociationSet Name="FK_Solapin" Association="Self.FK_Solapin">
+            <End Role="Personal" EntitySet="Personal" />
+            <End Role="PersonalImagen" EntitySet="PersonalImagen" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LectorHuellasModelStoreContainer" CdmEntityContainer="LectorHuellasEntities">
+          <EntitySetMapping Name="Personal">
+            <EntityTypeMapping TypeName="LectorHuellasModel.Personal">
+              <MappingFragment StoreEntitySet="Personal">
+                <ScalarProperty Name="Exp" ColumnName="Exp" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+                <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+                <ScalarProperty Name="CarneId" ColumnName="CarneId" />
+                <ScalarProperty Name="Fotolector" ColumnName="Fotolector" />
+                <ScalarProperty Name="Raza" ColumnName="Raza" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonalImagen">
+            <EntityTypeMapping TypeName="LectorHuellasModel.PersonalImagen">
+              <MappingFragment StoreEntitySet="PersonalImagen">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Solapin" ColumnName="Solapin" />
+                <ScalarProperty Name="NombreDedo" ColumnName="NombreDedo" />
+                <ScalarProperty Name="DirImagen" ColumnName="DirImagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistroES">
+            <EntityTypeMapping TypeName="LectorHuellasModel.RegistroES">
+              <MappingFragment StoreEntitySet="RegistroES">
+                <ScalarProperty Name="Exp" ColumnName="Exp" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistroESpejo">
+            <EntityTypeMapping TypeName="LectorHuellasModel.RegistroESpejo">
+              <MappingFragment StoreEntitySet="RegistroESpejo">
+                <ScalarProperty Name="Exp" ColumnName="Exp" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

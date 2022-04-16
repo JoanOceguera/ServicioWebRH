@@ -1,0 +1,1467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RecursosHumanosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Agrupaciones">
+          <Key>
+            <PropertyRef Name="Id_Agrup" />
+          </Key>
+          <Property Name="Id_Agrup" Type="tinyint" Nullable="false" />
+          <Property Name="Nom_Agrup" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BaseDatos" Type="varchar" MaxLength="30" />
+          <Property Name="Alias" Type="varchar" MaxLength="20" />
+          <Property Name="Produce" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Id_Scta" Type="char" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="BajaPlantilla">
+          <Key>
+            <PropertyRef Name="Cod_Plaza" />
+          </Key>
+          <Property Name="Cod_Plaza" Type="smallint" Nullable="false" />
+          <Property Name="Ocupacion" Type="smallint" Nullable="false" />
+          <Property Name="GSalarial" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Basico" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="Condiciones" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Plus" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Resolucion" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="Departamento" Type="tinyint" Nullable="false" />
+          <Property Name="MNomina" Type="char" MaxLength="2" />
+          <Property Name="CTecnica" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="EspecialistaP" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="CTecnologica" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="RCITMA" Type="decimal" Precision="6" Scale="2" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'RecursosHumanos.dbo.BajasPers' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="BajasPers">
+          <Key>
+            <PropertyRef Name="Exp" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Apellido1" />
+            <PropertyRef Name="Apellido2" />
+            <PropertyRef Name="CarneId" />
+            <PropertyRef Name="Direccion" />
+            <PropertyRef Name="Mpio" />
+            <PropertyRef Name="Provincia" />
+            <PropertyRef Name="Pais" />
+            <PropertyRef Name="Sucursal" />
+            <PropertyRef Name="Clasificacion" />
+            <PropertyRef Name="CategOcup" />
+          </Key>
+          <Property Name="Exp" Type="smallint" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Apellido1" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Apellido2" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CarneId" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="Direccion" Type="char" MaxLength="80" Nullable="false" />
+          <Property Name="Mpio" Type="smallint" Nullable="false" />
+          <Property Name="Provincia" Type="smallint" Nullable="false" />
+          <Property Name="Pais" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Sucursal" Type="tinyint" Nullable="false" />
+          <Property Name="Telefono" Type="char" MaxLength="10" />
+          <Property Name="Clasificacion" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Profesion" Type="smallint" />
+          <Property Name="CategOcup" Type="tinyint" Nullable="false" />
+          <Property Name="CategDoc" Type="tinyint" />
+          <Property Name="CategCient" Type="tinyint" />
+          <Property Name="CategTecno" Type="tinyint" />
+          <Property Name="GradoCient" Type="smallint" />
+          <Property Name="Especialidad" Type="tinyint" />
+          <Property Name="CategBTecno" Type="tinyint" />
+          <Property Name="Militancia" Type="char" MaxLength="3" />
+          <Property Name="Baja" Type="smalldatetime" />
+          <Property Name="Alta" Type="smalldatetime" />
+          <Property Name="Foto" Type="varchar" MaxLength="70" />
+          <Property Name="IdPlaza" Type="smallint" />
+          <Property Name="Motivo" Type="varchar" MaxLength="100" />
+          <Property Name="Contrata" Type="char" MaxLength="1" />
+          <Property Name="Cargo" Type="tinyint" />
+          <Property Name="Antiguedad" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="ContabilidadC" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Dirigente" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="GCientifico" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Gelectrogeno" Type="decimal" Precision="6" Scale="2" />
+        </EntityType>
+        <EntityType Name="CBiotecnologicas">
+          <Key>
+            <PropertyRef Name="Cod_CBT" />
+          </Key>
+          <Property Name="Cod_CBT" Type="tinyint" Nullable="false" />
+          <Property Name="Nomb_CBT" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CCientificas">
+          <Key>
+            <PropertyRef Name="Cod_CC" />
+          </Key>
+          <Property Name="Cod_CC" Type="tinyint" Nullable="false" />
+          <Property Name="Nomb_CC" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CDocente">
+          <Key>
+            <PropertyRef Name="Cod_CD" />
+          </Key>
+          <Property Name="Cod_CD" Type="tinyint" Nullable="false" />
+          <Property Name="Nomb_CD" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COcupacional">
+          <Key>
+            <PropertyRef Name="Cod_CO" />
+          </Key>
+          <Property Name="Cod_CO" Type="tinyint" Nullable="false" />
+          <Property Name="Nomb_CO" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CTecnologicas">
+          <Key>
+            <PropertyRef Name="Cod_CT" />
+          </Key>
+          <Property Name="Cod_CT" Type="tinyint" Nullable="false" />
+          <Property Name="Nomb_CT" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departamentos">
+          <Key>
+            <PropertyRef Name="Id_Dpto" />
+          </Key>
+          <Property Name="Id_Dpto" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Agrup" Type="tinyint" Nullable="false" />
+          <Property Name="Nom_Dpto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="char" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="GCientifico">
+          <Key>
+            <PropertyRef Name="Cod_GC" />
+          </Key>
+          <Property Name="Cod_GC" Type="smallint" Nullable="false" />
+          <Property Name="Des_GC" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Cuantia" Type="decimal" Precision="6" Scale="2" />
+        </EntityType>
+        <EntityType Name="Municipios">
+          <Key>
+            <PropertyRef Name="Id_Pais" />
+            <PropertyRef Name="Id_Prov" />
+            <PropertyRef Name="Cod_Mpio" />
+          </Key>
+          <Property Name="Id_Pais" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Id_Prov" Type="smallint" Nullable="false" />
+          <Property Name="Cod_Mpio" Type="smallint" Nullable="false" />
+          <Property Name="Nomb_Mpio" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="C_Municipio" Type="int" />
+        </EntityType>
+        <EntityType Name="Personal">
+          <Key>
+            <PropertyRef Name="Exp" />
+          </Key>
+          <Property Name="Exp" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Apellido1" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Apellido2" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CarneId" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Mpio" Type="smallint" Nullable="false" />
+          <Property Name="Provincia" Type="smallint" Nullable="false" />
+          <Property Name="Pais" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Sucursal" Type="tinyint" Nullable="false" />
+          <Property Name="Telefono" Type="char" MaxLength="10" />
+          <Property Name="Clasificacion" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Profesion" Type="smallint" />
+          <Property Name="CategOcup" Type="tinyint" Nullable="false" />
+          <Property Name="CategDoc" Type="tinyint" />
+          <Property Name="CategCient" Type="tinyint" />
+          <Property Name="CategTecno" Type="tinyint" />
+          <Property Name="GradoCient" Type="smallint" />
+          <Property Name="Especialidad" Type="tinyint" />
+          <Property Name="CategBTecno" Type="tinyint" />
+          <Property Name="Militancia" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Curriculum" Type="text" />
+          <Property Name="IdPlaza" Type="smallint" Nullable="false" />
+          <Property Name="Alta" Type="datetime" Nullable="false" />
+          <Property Name="Foto" Type="varchar" MaxLength="70" />
+          <Property Name="Contrata" Type="char" MaxLength="1" />
+          <Property Name="Cargo" Type="tinyint" />
+          <Property Name="Antiguedad" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="ContabilidadC" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Dirigente" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="GCientifico" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="GElectrogeno" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Fotolector" Type="varchar" MaxLength="70" />
+          <Property Name="EstudiosTerminados" Type="smallint" />
+          <Property Name="Raza" Type="nvarchar" MaxLength="1" />
+          <Property Name="FotoImg" Type="image" />
+        </EntityType>
+        <EntityType Name="Plantilla">
+          <Key>
+            <PropertyRef Name="Cod_Plaza" />
+          </Key>
+          <Property Name="Cod_Plaza" Type="smallint" Nullable="false" />
+          <Property Name="Ocupacion" Type="smallint" Nullable="false" />
+          <Property Name="GSalarial" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Basico" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="Condiciones" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Plus" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Resolucion" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="Departamento" Type="tinyint" Nullable="false" />
+          <Property Name="MNomina" Type="char" MaxLength="2" />
+          <Property Name="Vacante" Type="tinyint" Nullable="false" />
+          <Property Name="CTecnica" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="EspecialistaP" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="CTecnologica" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="RCITMA" Type="decimal" Precision="6" Scale="2" />
+        </EntityType>
+        <EntityType Name="Plazas">
+          <Key>
+            <PropertyRef Name="Id_Ocup" />
+          </Key>
+          <Property Name="Id_Ocup" Type="smallint" Nullable="false" />
+          <Property Name="Nom_Ocup" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK___4__12">
+          <End Role="Agrupaciones" Type="Self.Agrupaciones" Multiplicity="1" />
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agrupaciones">
+              <PropertyRef Name="Id_Agrup" />
+            </Principal>
+            <Dependent Role="Departamentos">
+              <PropertyRef Name="Id_Agrup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BajasPers_1__28">
+          <End Role="Municipios" Type="Self.Municipios" Multiplicity="1" />
+          <End Role="BajasPers" Type="Self.BajasPers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipios">
+              <PropertyRef Name="Id_Pais" />
+              <PropertyRef Name="Id_Prov" />
+              <PropertyRef Name="Cod_Mpio" />
+            </Principal>
+            <Dependent Role="BajasPers">
+              <PropertyRef Name="Pais" />
+              <PropertyRef Name="Provincia" />
+              <PropertyRef Name="Mpio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BajasPers_4__28">
+          <End Role="CCientificas" Type="Self.CCientificas" Multiplicity="0..1" />
+          <End Role="BajasPers" Type="Self.BajasPers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CCientificas">
+              <PropertyRef Name="Cod_CC" />
+            </Principal>
+            <Dependent Role="BajasPers">
+              <PropertyRef Name="CategCient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BajasPers_5__28">
+          <End Role="CDocente" Type="Self.CDocente" Multiplicity="0..1" />
+          <End Role="BajasPers" Type="Self.BajasPers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CDocente">
+              <PropertyRef Name="Cod_CD" />
+            </Principal>
+            <Dependent Role="BajasPers">
+              <PropertyRef Name="CategDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BajasPers_6__28">
+          <End Role="COcupacional" Type="Self.COcupacional" Multiplicity="1" />
+          <End Role="BajasPers" Type="Self.BajasPers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COcupacional">
+              <PropertyRef Name="Cod_CO" />
+            </Principal>
+            <Dependent Role="BajasPers">
+              <PropertyRef Name="CategOcup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BajasPers_7__28">
+          <End Role="GCientifico" Type="Self.GCientifico" Multiplicity="0..1" />
+          <End Role="BajasPers" Type="Self.BajasPers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GCientifico">
+              <PropertyRef Name="Cod_GC" />
+            </Principal>
+            <Dependent Role="BajasPers">
+              <PropertyRef Name="GradoCient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BajasPers_BajaPlantilla">
+          <End Role="BajaPlantilla" Type="Self.BajaPlantilla" Multiplicity="0..1" />
+          <End Role="BajasPers" Type="Self.BajasPers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BajaPlantilla">
+              <PropertyRef Name="Cod_Plaza" />
+            </Principal>
+            <Dependent Role="BajasPers">
+              <PropertyRef Name="IdPlaza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BajasPers_CBiotecnologicas">
+          <End Role="CBiotecnologicas" Type="Self.CBiotecnologicas" Multiplicity="0..1" />
+          <End Role="BajasPers" Type="Self.BajasPers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CBiotecnologicas">
+              <PropertyRef Name="Cod_CBT" />
+            </Principal>
+            <Dependent Role="BajasPers">
+              <PropertyRef Name="CategBTecno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BajasPers_CTecnologicas">
+          <End Role="CTecnologicas" Type="Self.CTecnologicas" Multiplicity="0..1" />
+          <End Role="BajasPers" Type="Self.BajasPers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CTecnologicas">
+              <PropertyRef Name="Cod_CT" />
+            </Principal>
+            <Dependent Role="BajasPers">
+              <PropertyRef Name="CategTecno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_CBiotecnologicas">
+          <End Role="CBiotecnologicas" Type="Self.CBiotecnologicas" Multiplicity="0..1" />
+          <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CBiotecnologicas">
+              <PropertyRef Name="Cod_CBT" />
+            </Principal>
+            <Dependent Role="Personal">
+              <PropertyRef Name="CategBTecno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_CCientificas">
+          <End Role="CCientificas" Type="Self.CCientificas" Multiplicity="0..1" />
+          <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CCientificas">
+              <PropertyRef Name="Cod_CC" />
+            </Principal>
+            <Dependent Role="Personal">
+              <PropertyRef Name="CategCient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_CDocente">
+          <End Role="CDocente" Type="Self.CDocente" Multiplicity="0..1" />
+          <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CDocente">
+              <PropertyRef Name="Cod_CD" />
+            </Principal>
+            <Dependent Role="Personal">
+              <PropertyRef Name="CategDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_COcupacional">
+          <End Role="COcupacional" Type="Self.COcupacional" Multiplicity="1" />
+          <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COcupacional">
+              <PropertyRef Name="Cod_CO" />
+            </Principal>
+            <Dependent Role="Personal">
+              <PropertyRef Name="CategOcup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_CTecnologicas">
+          <End Role="CTecnologicas" Type="Self.CTecnologicas" Multiplicity="0..1" />
+          <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CTecnologicas">
+              <PropertyRef Name="Cod_CT" />
+            </Principal>
+            <Dependent Role="Personal">
+              <PropertyRef Name="CategTecno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_GCientifico">
+          <End Role="GCientifico" Type="Self.GCientifico" Multiplicity="0..1" />
+          <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GCientifico">
+              <PropertyRef Name="Cod_GC" />
+            </Principal>
+            <Dependent Role="Personal">
+              <PropertyRef Name="GradoCient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_Municipios">
+          <End Role="Municipios" Type="Self.Municipios" Multiplicity="1" />
+          <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipios">
+              <PropertyRef Name="Id_Pais" />
+              <PropertyRef Name="Id_Prov" />
+              <PropertyRef Name="Cod_Mpio" />
+            </Principal>
+            <Dependent Role="Personal">
+              <PropertyRef Name="Pais" />
+              <PropertyRef Name="Provincia" />
+              <PropertyRef Name="Mpio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_Plantilla">
+          <End Role="Plantilla" Type="Self.Plantilla" Multiplicity="1" />
+          <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plantilla">
+              <PropertyRef Name="Cod_Plaza" />
+            </Principal>
+            <Dependent Role="Personal">
+              <PropertyRef Name="IdPlaza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKBajasDpto">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
+          <End Role="BajaPlantilla" Type="Self.BajaPlantilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="Id_Dpto" />
+            </Principal>
+            <Dependent Role="BajaPlantilla">
+              <PropertyRef Name="Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKBajasOcupacion">
+          <End Role="Plazas" Type="Self.Plazas" Multiplicity="1" />
+          <End Role="BajaPlantilla" Type="Self.BajaPlantilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plazas">
+              <PropertyRef Name="Id_Ocup" />
+            </Principal>
+            <Dependent Role="BajaPlantilla">
+              <PropertyRef Name="Ocupacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPlantillaDpto">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
+          <End Role="Plantilla" Type="Self.Plantilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="Id_Dpto" />
+            </Principal>
+            <Dependent Role="Plantilla">
+              <PropertyRef Name="Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPlantillaOcup">
+          <End Role="Plazas" Type="Self.Plazas" Multiplicity="1" />
+          <End Role="Plantilla" Type="Self.Plantilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plazas">
+              <PropertyRef Name="Id_Ocup" />
+            </Principal>
+            <Dependent Role="Plantilla">
+              <PropertyRef Name="Ocupacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RecursosHumanosModelStoreContainer">
+          <EntitySet Name="Agrupaciones" EntityType="Self.Agrupaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BajaPlantilla" EntityType="Self.BajaPlantilla" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CBiotecnologicas" EntityType="Self.CBiotecnologicas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CCientificas" EntityType="Self.CCientificas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CDocente" EntityType="Self.CDocente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COcupacional" EntityType="Self.COcupacional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CTecnologicas" EntityType="Self.CTecnologicas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GCientifico" EntityType="Self.GCientifico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Municipios" EntityType="Self.Municipios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personal" EntityType="Self.Personal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plantilla" EntityType="Self.Plantilla" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plazas" EntityType="Self.Plazas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BajasPers" EntityType="Self.BajasPers" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BajasPers].[Exp] AS [Exp], 
+    [BajasPers].[Nombre] AS [Nombre], 
+    [BajasPers].[Apellido1] AS [Apellido1], 
+    [BajasPers].[Apellido2] AS [Apellido2], 
+    [BajasPers].[CarneId] AS [CarneId], 
+    [BajasPers].[Direccion] AS [Direccion], 
+    [BajasPers].[Mpio] AS [Mpio], 
+    [BajasPers].[Provincia] AS [Provincia], 
+    [BajasPers].[Pais] AS [Pais], 
+    [BajasPers].[Sucursal] AS [Sucursal], 
+    [BajasPers].[Telefono] AS [Telefono], 
+    [BajasPers].[Clasificacion] AS [Clasificacion], 
+    [BajasPers].[Profesion] AS [Profesion], 
+    [BajasPers].[CategOcup] AS [CategOcup], 
+    [BajasPers].[CategDoc] AS [CategDoc], 
+    [BajasPers].[CategCient] AS [CategCient], 
+    [BajasPers].[CategTecno] AS [CategTecno], 
+    [BajasPers].[GradoCient] AS [GradoCient], 
+    [BajasPers].[Especialidad] AS [Especialidad], 
+    [BajasPers].[CategBTecno] AS [CategBTecno], 
+    [BajasPers].[Militancia] AS [Militancia], 
+    [BajasPers].[Baja] AS [Baja], 
+    [BajasPers].[Alta] AS [Alta], 
+    [BajasPers].[Foto] AS [Foto], 
+    [BajasPers].[IdPlaza] AS [IdPlaza], 
+    [BajasPers].[Motivo] AS [Motivo], 
+    [BajasPers].[Contrata] AS [Contrata], 
+    [BajasPers].[Cargo] AS [Cargo], 
+    [BajasPers].[Antiguedad] AS [Antiguedad], 
+    [BajasPers].[ContabilidadC] AS [ContabilidadC], 
+    [BajasPers].[Dirigente] AS [Dirigente], 
+    [BajasPers].[GCientifico] AS [GCientifico], 
+    [BajasPers].[Gelectrogeno] AS [Gelectrogeno]
+    FROM [dbo].[BajasPers] AS [BajasPers]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK___4__12" Association="Self.FK___4__12">
+            <End Role="Agrupaciones" EntitySet="Agrupaciones" />
+            <End Role="Departamentos" EntitySet="Departamentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BajasPers_1__28" Association="Self.FK_BajasPers_1__28">
+            <End Role="Municipios" EntitySet="Municipios" />
+            <End Role="BajasPers" EntitySet="BajasPers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BajasPers_4__28" Association="Self.FK_BajasPers_4__28">
+            <End Role="CCientificas" EntitySet="CCientificas" />
+            <End Role="BajasPers" EntitySet="BajasPers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BajasPers_5__28" Association="Self.FK_BajasPers_5__28">
+            <End Role="CDocente" EntitySet="CDocente" />
+            <End Role="BajasPers" EntitySet="BajasPers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BajasPers_6__28" Association="Self.FK_BajasPers_6__28">
+            <End Role="COcupacional" EntitySet="COcupacional" />
+            <End Role="BajasPers" EntitySet="BajasPers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BajasPers_7__28" Association="Self.FK_BajasPers_7__28">
+            <End Role="GCientifico" EntitySet="GCientifico" />
+            <End Role="BajasPers" EntitySet="BajasPers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BajasPers_BajaPlantilla" Association="Self.FK_BajasPers_BajaPlantilla">
+            <End Role="BajaPlantilla" EntitySet="BajaPlantilla" />
+            <End Role="BajasPers" EntitySet="BajasPers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BajasPers_CBiotecnologicas" Association="Self.FK_BajasPers_CBiotecnologicas">
+            <End Role="CBiotecnologicas" EntitySet="CBiotecnologicas" />
+            <End Role="BajasPers" EntitySet="BajasPers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BajasPers_CTecnologicas" Association="Self.FK_BajasPers_CTecnologicas">
+            <End Role="CTecnologicas" EntitySet="CTecnologicas" />
+            <End Role="BajasPers" EntitySet="BajasPers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_CBiotecnologicas" Association="Self.FK_Personal_CBiotecnologicas">
+            <End Role="CBiotecnologicas" EntitySet="CBiotecnologicas" />
+            <End Role="Personal" EntitySet="Personal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_CCientificas" Association="Self.FK_Personal_CCientificas">
+            <End Role="CCientificas" EntitySet="CCientificas" />
+            <End Role="Personal" EntitySet="Personal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_CDocente" Association="Self.FK_Personal_CDocente">
+            <End Role="CDocente" EntitySet="CDocente" />
+            <End Role="Personal" EntitySet="Personal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_COcupacional" Association="Self.FK_Personal_COcupacional">
+            <End Role="COcupacional" EntitySet="COcupacional" />
+            <End Role="Personal" EntitySet="Personal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_CTecnologicas" Association="Self.FK_Personal_CTecnologicas">
+            <End Role="CTecnologicas" EntitySet="CTecnologicas" />
+            <End Role="Personal" EntitySet="Personal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_GCientifico" Association="Self.FK_Personal_GCientifico">
+            <End Role="GCientifico" EntitySet="GCientifico" />
+            <End Role="Personal" EntitySet="Personal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_Municipios" Association="Self.FK_Personal_Municipios">
+            <End Role="Municipios" EntitySet="Municipios" />
+            <End Role="Personal" EntitySet="Personal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_Plantilla" Association="Self.FK_Personal_Plantilla">
+            <End Role="Plantilla" EntitySet="Plantilla" />
+            <End Role="Personal" EntitySet="Personal" />
+          </AssociationSet>
+          <AssociationSet Name="FKBajasDpto" Association="Self.FKBajasDpto">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="BajaPlantilla" EntitySet="BajaPlantilla" />
+          </AssociationSet>
+          <AssociationSet Name="FKBajasOcupacion" Association="Self.FKBajasOcupacion">
+            <End Role="Plazas" EntitySet="Plazas" />
+            <End Role="BajaPlantilla" EntitySet="BajaPlantilla" />
+          </AssociationSet>
+          <AssociationSet Name="FKPlantillaDpto" Association="Self.FKPlantillaDpto">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Plantilla" EntitySet="Plantilla" />
+          </AssociationSet>
+          <AssociationSet Name="FKPlantillaOcup" Association="Self.FKPlantillaOcup">
+            <End Role="Plazas" EntitySet="Plazas" />
+            <End Role="Plantilla" EntitySet="Plantilla" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RecursosHumanosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Agrupaciones">
+          <Key>
+            <PropertyRef Name="Id_Agrup" />
+          </Key>
+          <Property Name="Id_Agrup" Type="Byte" Nullable="false" />
+          <Property Name="Nom_Agrup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BaseDatos" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Alias" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Produce" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Id_Scta" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Departamentos" Relationship="Self.FK___4__12" FromRole="Agrupaciones" ToRole="Departamentos" />
+        </EntityType>
+        <EntityType Name="COcupacional">
+          <Key>
+            <PropertyRef Name="Cod_CO" />
+          </Key>
+          <Property Name="Cod_CO" Type="Byte" Nullable="false" />
+          <Property Name="Nomb_CO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BajasPers" Relationship="Self.FK_BajasPers_6__28" FromRole="COcupacional" ToRole="BajasPers" />
+          <NavigationProperty Name="Personal" Relationship="Self.FK_Personal_COcupacional" FromRole="COcupacional" ToRole="Personal" />
+        </EntityType>
+        <EntityType Name="Departamentos">
+          <Key>
+            <PropertyRef Name="Id_Dpto" />
+          </Key>
+          <Property Name="Id_Dpto" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Agrup" Type="Byte" Nullable="false" />
+          <Property Name="Nom_Dpto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Agrupaciones" Relationship="Self.FK___4__12" FromRole="Departamentos" ToRole="Agrupaciones" />
+          <NavigationProperty Name="Plantilla" Relationship="Self.FKPlantillaDpto" FromRole="Departamentos" ToRole="Plantilla" />
+          <NavigationProperty Name="BajaPlantilla" Relationship="RecursosHumanosModel.FKBajasDpto" FromRole="Departamentos" ToRole="BajaPlantilla" />
+        </EntityType>
+        <EntityType Name="PersonalRH">
+          <Key>
+            <PropertyRef Name="Exp" />
+          </Key>
+          <Property Name="Exp" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CarneId" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mpio" Type="Int16" Nullable="false" />
+          <Property Name="Provincia" Type="Int16" Nullable="false" />
+          <Property Name="Pais" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Sucursal" Type="Byte" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Clasificacion" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Profesion" Type="Int16" />
+          <Property Name="CategOcup" Type="Byte" Nullable="false" />
+          <Property Name="CategDoc" Type="Byte" />
+          <Property Name="CategCient" Type="Byte" />
+          <Property Name="CategTecno" Type="Byte" />
+          <Property Name="GradoCient" Type="Int16" />
+          <Property Name="Especialidad" Type="Byte" />
+          <Property Name="CategBTecno" Type="Byte" />
+          <Property Name="Militancia" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Curriculum" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdPlaza" Type="Int16" Nullable="false" />
+          <Property Name="Alta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Foto" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Contrata" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Cargo" Type="Byte" />
+          <Property Name="Antiguedad" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="ContabilidadC" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Dirigente" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="GCientifico" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="GElectrogeno" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Fotolector" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="EstudiosTerminados" Type="Int16" />
+          <Property Name="Raza" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="COcupacional" Relationship="Self.FK_Personal_COcupacional" FromRole="Personal" ToRole="COcupacional" />
+          <NavigationProperty Name="Plantilla" Relationship="Self.FK_Personal_Plantilla" FromRole="Personal" ToRole="Plantilla" />
+          <NavigationProperty Name="GCientifico1" Relationship="RecursosHumanosModel.FK_Personal_GCientifico" FromRole="PersonalRH" ToRole="GCientifico" />
+          <NavigationProperty Name="Municipios" Relationship="RecursosHumanosModel.FK_Personal_Municipios" FromRole="PersonalRH" ToRole="Municipios" />
+          <NavigationProperty Name="CBiotecnologicas" Relationship="RecursosHumanosModel.FK_Personal_CBiotecnologicas" FromRole="PersonalRH" ToRole="CBiotecnologicas" />
+          <NavigationProperty Name="CCientificas" Relationship="RecursosHumanosModel.FK_Personal_CCientificas" FromRole="PersonalRH" ToRole="CCientificas" />
+          <NavigationProperty Name="CDocente" Relationship="RecursosHumanosModel.FK_Personal_CDocente" FromRole="PersonalRH" ToRole="CDocente" />
+          <NavigationProperty Name="CTecnologicas" Relationship="RecursosHumanosModel.FK_Personal_CTecnologicas" FromRole="PersonalRH" ToRole="CTecnologicas" />
+        </EntityType>
+        <EntityType Name="Plantilla">
+          <Key>
+            <PropertyRef Name="Cod_Plaza" />
+          </Key>
+          <Property Name="Cod_Plaza" Type="Int16" Nullable="false" />
+          <Property Name="Ocupacion" Type="Int16" Nullable="false" />
+          <Property Name="GSalarial" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Basico" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="Condiciones" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Plus" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Resolucion" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Departamento" Type="Byte" Nullable="false" />
+          <Property Name="MNomina" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Vacante" Type="Byte" Nullable="false" />
+          <Property Name="CTecnica" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="EspecialistaP" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="CTecnologica" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="RCITMA" Type="Decimal" Precision="6" Scale="2" />
+          <NavigationProperty Name="Departamentos" Relationship="Self.FKPlantillaDpto" FromRole="Plantilla" ToRole="Departamentos" />
+          <NavigationProperty Name="Personal" Relationship="Self.FK_Personal_Plantilla" FromRole="Plantilla" ToRole="Personal" />
+          <NavigationProperty Name="Plazas" Relationship="RecursosHumanosModel.FKPlantillaOcup" FromRole="Plantilla" ToRole="Plazas" />
+        </EntityType>
+        <EntityType Name="BajasPers">
+          <Key>
+            <PropertyRef Name="Exp" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Apellido1" />
+            <PropertyRef Name="Apellido2" />
+            <PropertyRef Name="CarneId" />
+            <PropertyRef Name="Direccion" />
+            <PropertyRef Name="Mpio" />
+            <PropertyRef Name="Provincia" />
+            <PropertyRef Name="Pais" />
+            <PropertyRef Name="Sucursal" />
+            <PropertyRef Name="Clasificacion" />
+            <PropertyRef Name="CategOcup" />
+          </Key>
+          <Property Name="Exp" Type="Int16" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CarneId" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="80" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Mpio" Type="Int16" Nullable="false" />
+          <Property Name="Provincia" Type="Int16" Nullable="false" />
+          <Property Name="Pais" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Sucursal" Type="Byte" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Clasificacion" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Profesion" Type="Int16" />
+          <Property Name="CategOcup" Type="Byte" Nullable="false" />
+          <Property Name="CategDoc" Type="Byte" />
+          <Property Name="CategCient" Type="Byte" />
+          <Property Name="CategTecno" Type="Byte" />
+          <Property Name="GradoCient" Type="Int16" />
+          <Property Name="Especialidad" Type="Byte" />
+          <Property Name="CategBTecno" Type="Byte" />
+          <Property Name="Militancia" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Baja" Type="DateTime" Precision="0" />
+          <Property Name="Alta" Type="DateTime" Precision="0" />
+          <Property Name="Foto" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="IdPlaza" Type="Int16" />
+          <Property Name="Motivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Contrata" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Cargo" Type="Byte" />
+          <Property Name="Antiguedad" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="ContabilidadC" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Dirigente" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="GCientifico" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Gelectrogeno" Type="Decimal" Precision="6" Scale="2" />
+          <NavigationProperty Name="COcupacional" Relationship="Self.FK_BajasPers_6__28" FromRole="BajasPers" ToRole="COcupacional" />
+          <NavigationProperty Name="GCientifico1" Relationship="RecursosHumanosModel.FK_BajasPers_7__28" FromRole="BajasPers" ToRole="GCientifico" />
+          <NavigationProperty Name="BajaPlantilla" Relationship="RecursosHumanosModel.FK_BajasPers_BajaPlantilla" FromRole="BajasPers" ToRole="BajaPlantilla" />
+          <NavigationProperty Name="Municipios" Relationship="RecursosHumanosModel.FK_BajasPers_1__28" FromRole="BajasPers" ToRole="Municipios" />
+          <NavigationProperty Name="CBiotecnologicas" Relationship="RecursosHumanosModel.FK_BajasPers_CBiotecnologicas" FromRole="BajasPers" ToRole="CBiotecnologicas" />
+          <NavigationProperty Name="CCientificas" Relationship="RecursosHumanosModel.FK_BajasPers_4__28" FromRole="BajasPers" ToRole="CCientificas" />
+          <NavigationProperty Name="CDocente" Relationship="RecursosHumanosModel.FK_BajasPers_5__28" FromRole="BajasPers" ToRole="CDocente" />
+          <NavigationProperty Name="CTecnologicas" Relationship="RecursosHumanosModel.FK_BajasPers_CTecnologicas" FromRole="BajasPers" ToRole="CTecnologicas" />
+        </EntityType>
+        <Association Name="FK___4__12">
+          <End Role="Agrupaciones" Type="Self.Agrupaciones" Multiplicity="1" />
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agrupaciones">
+              <PropertyRef Name="Id_Agrup" />
+            </Principal>
+            <Dependent Role="Departamentos">
+              <PropertyRef Name="Id_Agrup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BajasPers_6__28">
+          <End Role="COcupacional" Type="Self.COcupacional" Multiplicity="1" />
+          <End Role="BajasPers" Type="Self.BajasPers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COcupacional">
+              <PropertyRef Name="Cod_CO" />
+            </Principal>
+            <Dependent Role="BajasPers">
+              <PropertyRef Name="CategOcup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_COcupacional">
+          <End Role="COcupacional" Type="Self.COcupacional" Multiplicity="1" />
+          <End Role="Personal" Type="RecursosHumanosModel.PersonalRH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COcupacional">
+              <PropertyRef Name="Cod_CO" />
+            </Principal>
+            <Dependent Role="Personal">
+              <PropertyRef Name="CategOcup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPlantillaDpto">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
+          <End Role="Plantilla" Type="Self.Plantilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="Id_Dpto" />
+            </Principal>
+            <Dependent Role="Plantilla">
+              <PropertyRef Name="Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_Plantilla">
+          <End Role="Plantilla" Type="Self.Plantilla" Multiplicity="1" />
+          <End Role="Personal" Type="RecursosHumanosModel.PersonalRH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plantilla">
+              <PropertyRef Name="Cod_Plaza" />
+            </Principal>
+            <Dependent Role="Personal">
+              <PropertyRef Name="IdPlaza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RecursosHumanosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Agrupaciones" EntityType="Self.Agrupaciones" />
+          <EntitySet Name="COcupacional" EntityType="Self.COcupacional" />
+          <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
+          <EntitySet Name="Personal" EntityType="RecursosHumanosModel.PersonalRH" />
+          <EntitySet Name="Plantilla" EntityType="Self.Plantilla" />
+          <EntitySet Name="BajasPers" EntityType="Self.BajasPers" />
+          <AssociationSet Name="FK___4__12" Association="Self.FK___4__12">
+            <End Role="Agrupaciones" EntitySet="Agrupaciones" />
+            <End Role="Departamentos" EntitySet="Departamentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BajasPers_6__28" Association="Self.FK_BajasPers_6__28">
+            <End Role="COcupacional" EntitySet="COcupacional" />
+            <End Role="BajasPers" EntitySet="BajasPers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_COcupacional" Association="Self.FK_Personal_COcupacional">
+            <End Role="COcupacional" EntitySet="COcupacional" />
+            <End Role="Personal" EntitySet="Personal" />
+          </AssociationSet>
+          <AssociationSet Name="FKPlantillaDpto" Association="Self.FKPlantillaDpto">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Plantilla" EntitySet="Plantilla" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_Plantilla" Association="Self.FK_Personal_Plantilla">
+            <End Role="Plantilla" EntitySet="Plantilla" />
+            <End Role="Personal" EntitySet="Personal" />
+          </AssociationSet>
+          <EntitySet Name="GCientifico" EntityType="RecursosHumanosModel.GCientifico" />
+          <AssociationSet Name="FK_BajasPers_7__28" Association="RecursosHumanosModel.FK_BajasPers_7__28">
+            <End Role="GCientifico" EntitySet="GCientifico" />
+            <End Role="BajasPers" EntitySet="BajasPers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_GCientifico" Association="RecursosHumanosModel.FK_Personal_GCientifico">
+            <End Role="GCientifico" EntitySet="GCientifico" />
+            <End Role="PersonalRH" EntitySet="Personal" />
+          </AssociationSet>
+          <EntitySet Name="Plazas" EntityType="RecursosHumanosModel.Plazas" />
+          <AssociationSet Name="FKPlantillaOcup" Association="RecursosHumanosModel.FKPlantillaOcup">
+            <End Role="Plazas" EntitySet="Plazas" />
+            <End Role="Plantilla" EntitySet="Plantilla" />
+          </AssociationSet>
+          <EntitySet Name="BajaPlantilla" EntityType="RecursosHumanosModel.BajaPlantilla" />
+          <AssociationSet Name="FK_BajasPers_BajaPlantilla" Association="RecursosHumanosModel.FK_BajasPers_BajaPlantilla">
+            <End Role="BajaPlantilla" EntitySet="BajaPlantilla" />
+            <End Role="BajasPers" EntitySet="BajasPers" />
+          </AssociationSet>
+          <AssociationSet Name="FKBajasDpto" Association="RecursosHumanosModel.FKBajasDpto">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="BajaPlantilla" EntitySet="BajaPlantilla" />
+          </AssociationSet>
+          <AssociationSet Name="FKBajasOcupacion" Association="RecursosHumanosModel.FKBajasOcupacion">
+            <End Role="Plazas" EntitySet="Plazas" />
+            <End Role="BajaPlantilla" EntitySet="BajaPlantilla" />
+          </AssociationSet>
+          <EntitySet Name="Municipios" EntityType="RecursosHumanosModel.Municipios" />
+          <AssociationSet Name="FK_BajasPers_1__28" Association="RecursosHumanosModel.FK_BajasPers_1__28">
+            <End Role="Municipios" EntitySet="Municipios" />
+            <End Role="BajasPers" EntitySet="BajasPers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_Municipios" Association="RecursosHumanosModel.FK_Personal_Municipios">
+            <End Role="Municipios" EntitySet="Municipios" />
+            <End Role="PersonalRH" EntitySet="Personal" />
+          </AssociationSet>
+          <EntitySet Name="CBiotecnologicas" EntityType="RecursosHumanosModel.CBiotecnologicas" />
+          <EntitySet Name="CCientificas" EntityType="RecursosHumanosModel.CCientificas" />
+          <EntitySet Name="CDocente" EntityType="RecursosHumanosModel.CDocente" />
+          <EntitySet Name="CTecnologicas" EntityType="RecursosHumanosModel.CTecnologicas" />
+          <AssociationSet Name="FK_BajasPers_CBiotecnologicas" Association="RecursosHumanosModel.FK_BajasPers_CBiotecnologicas">
+            <End Role="CBiotecnologicas" EntitySet="CBiotecnologicas" />
+            <End Role="BajasPers" EntitySet="BajasPers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_CBiotecnologicas" Association="RecursosHumanosModel.FK_Personal_CBiotecnologicas">
+            <End Role="CBiotecnologicas" EntitySet="CBiotecnologicas" />
+            <End Role="PersonalRH" EntitySet="Personal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BajasPers_4__28" Association="RecursosHumanosModel.FK_BajasPers_4__28">
+            <End Role="CCientificas" EntitySet="CCientificas" />
+            <End Role="BajasPers" EntitySet="BajasPers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_CCientificas" Association="RecursosHumanosModel.FK_Personal_CCientificas">
+            <End Role="CCientificas" EntitySet="CCientificas" />
+            <End Role="PersonalRH" EntitySet="Personal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BajasPers_5__28" Association="RecursosHumanosModel.FK_BajasPers_5__28">
+            <End Role="CDocente" EntitySet="CDocente" />
+            <End Role="BajasPers" EntitySet="BajasPers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_CDocente" Association="RecursosHumanosModel.FK_Personal_CDocente">
+            <End Role="CDocente" EntitySet="CDocente" />
+            <End Role="PersonalRH" EntitySet="Personal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BajasPers_CTecnologicas" Association="RecursosHumanosModel.FK_BajasPers_CTecnologicas">
+            <End Role="CTecnologicas" EntitySet="CTecnologicas" />
+            <End Role="BajasPers" EntitySet="BajasPers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_CTecnologicas" Association="RecursosHumanosModel.FK_Personal_CTecnologicas">
+            <End Role="CTecnologicas" EntitySet="CTecnologicas" />
+            <End Role="PersonalRH" EntitySet="Personal" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="GCientifico">
+          <Key>
+            <PropertyRef Name="Cod_GC" />
+          </Key>
+          <Property Name="Cod_GC" Type="Int16" Nullable="false" />
+          <Property Name="Des_GC" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Cuantia" Type="Decimal" Precision="6" Scale="2" />
+          <NavigationProperty Name="BajasPers" Relationship="RecursosHumanosModel.FK_BajasPers_7__28" FromRole="GCientifico" ToRole="BajasPers" />
+          <NavigationProperty Name="Personal" Relationship="RecursosHumanosModel.FK_Personal_GCientifico" FromRole="GCientifico" ToRole="PersonalRH" />
+        </EntityType>
+        <Association Name="FK_BajasPers_7__28">
+          <End Type="RecursosHumanosModel.GCientifico" Role="GCientifico" Multiplicity="0..1" />
+          <End Type="RecursosHumanosModel.BajasPers" Role="BajasPers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GCientifico">
+              <PropertyRef Name="Cod_GC" />
+            </Principal>
+            <Dependent Role="BajasPers">
+              <PropertyRef Name="GradoCient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_GCientifico">
+          <End Type="RecursosHumanosModel.GCientifico" Role="GCientifico" Multiplicity="0..1" />
+          <End Type="RecursosHumanosModel.PersonalRH" Role="PersonalRH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GCientifico">
+              <PropertyRef Name="Cod_GC" />
+            </Principal>
+            <Dependent Role="PersonalRH">
+              <PropertyRef Name="GradoCient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Plazas">
+          <Key>
+            <PropertyRef Name="Id_Ocup" />
+          </Key>
+          <Property Name="Id_Ocup" Type="Int16" Nullable="false" />
+          <Property Name="Nom_Ocup" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Plantilla" Relationship="RecursosHumanosModel.FKPlantillaOcup" FromRole="Plazas" ToRole="Plantilla" />
+          <NavigationProperty Name="BajaPlantilla" Relationship="RecursosHumanosModel.FKBajasOcupacion" FromRole="Plazas" ToRole="BajaPlantilla" />
+        </EntityType>
+        <Association Name="FKPlantillaOcup">
+          <End Type="RecursosHumanosModel.Plazas" Role="Plazas" Multiplicity="1" />
+          <End Type="RecursosHumanosModel.Plantilla" Role="Plantilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plazas">
+              <PropertyRef Name="Id_Ocup" />
+            </Principal>
+            <Dependent Role="Plantilla">
+              <PropertyRef Name="Ocupacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BajaPlantilla">
+          <Key>
+            <PropertyRef Name="Cod_Plaza" />
+          </Key>
+          <Property Name="Cod_Plaza" Type="Int16" Nullable="false" />
+          <Property Name="Ocupacion" Type="Int16" Nullable="false" />
+          <Property Name="GSalarial" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Basico" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="Condiciones" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Plus" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Resolucion" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="Departamento" Type="Byte" Nullable="false" />
+          <Property Name="MNomina" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="CTecnica" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="EspecialistaP" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="CTecnologica" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="RCITMA" Type="Decimal" Precision="6" Scale="2" />
+          <NavigationProperty Name="BajasPers" Relationship="RecursosHumanosModel.FK_BajasPers_BajaPlantilla" FromRole="BajaPlantilla" ToRole="BajasPers" />
+          <NavigationProperty Name="Departamentos" Relationship="RecursosHumanosModel.FKBajasDpto" FromRole="BajaPlantilla" ToRole="Departamentos" />
+          <NavigationProperty Name="Plazas" Relationship="RecursosHumanosModel.FKBajasOcupacion" FromRole="BajaPlantilla" ToRole="Plazas" />
+        </EntityType>
+        <Association Name="FK_BajasPers_BajaPlantilla">
+          <End Type="RecursosHumanosModel.BajaPlantilla" Role="BajaPlantilla" Multiplicity="0..1" />
+          <End Type="RecursosHumanosModel.BajasPers" Role="BajasPers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BajaPlantilla">
+              <PropertyRef Name="Cod_Plaza" />
+            </Principal>
+            <Dependent Role="BajasPers">
+              <PropertyRef Name="IdPlaza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKBajasDpto">
+          <End Type="RecursosHumanosModel.Departamentos" Role="Departamentos" Multiplicity="1" />
+          <End Type="RecursosHumanosModel.BajaPlantilla" Role="BajaPlantilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="Id_Dpto" />
+            </Principal>
+            <Dependent Role="BajaPlantilla">
+              <PropertyRef Name="Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKBajasOcupacion">
+          <End Type="RecursosHumanosModel.Plazas" Role="Plazas" Multiplicity="1" />
+          <End Type="RecursosHumanosModel.BajaPlantilla" Role="BajaPlantilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plazas">
+              <PropertyRef Name="Id_Ocup" />
+            </Principal>
+            <Dependent Role="BajaPlantilla">
+              <PropertyRef Name="Ocupacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Municipios">
+          <Key>
+            <PropertyRef Name="Id_Pais" />
+            <PropertyRef Name="Id_Prov" />
+            <PropertyRef Name="Cod_Mpio" />
+          </Key>
+          <Property Name="Id_Pais" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Id_Prov" Type="Int16" Nullable="false" />
+          <Property Name="Cod_Mpio" Type="Int16" Nullable="false" />
+          <Property Name="Nomb_Mpio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C_Municipio" Type="Int32" />
+          <NavigationProperty Name="BajasPers" Relationship="RecursosHumanosModel.FK_BajasPers_1__28" FromRole="Municipios" ToRole="BajasPers" />
+          <NavigationProperty Name="Personal" Relationship="RecursosHumanosModel.FK_Personal_Municipios" FromRole="Municipios" ToRole="PersonalRH" />
+        </EntityType>
+        <Association Name="FK_BajasPers_1__28">
+          <End Type="RecursosHumanosModel.Municipios" Role="Municipios" Multiplicity="1" />
+          <End Type="RecursosHumanosModel.BajasPers" Role="BajasPers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipios">
+              <PropertyRef Name="Id_Pais" />
+              <PropertyRef Name="Id_Prov" />
+              <PropertyRef Name="Cod_Mpio" />
+            </Principal>
+            <Dependent Role="BajasPers">
+              <PropertyRef Name="Pais" />
+              <PropertyRef Name="Provincia" />
+              <PropertyRef Name="Mpio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_Municipios">
+          <End Type="RecursosHumanosModel.Municipios" Role="Municipios" Multiplicity="1" />
+          <End Type="RecursosHumanosModel.PersonalRH" Role="PersonalRH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipios">
+              <PropertyRef Name="Id_Pais" />
+              <PropertyRef Name="Id_Prov" />
+              <PropertyRef Name="Cod_Mpio" />
+            </Principal>
+            <Dependent Role="PersonalRH">
+              <PropertyRef Name="Pais" />
+              <PropertyRef Name="Provincia" />
+              <PropertyRef Name="Mpio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CBiotecnologicas">
+          <Key>
+            <PropertyRef Name="Cod_CBT" />
+          </Key>
+          <Property Name="Cod_CBT" Type="Byte" Nullable="false" />
+          <Property Name="Nomb_CBT" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BajasPers" Relationship="RecursosHumanosModel.FK_BajasPers_CBiotecnologicas" FromRole="CBiotecnologicas" ToRole="BajasPers" />
+          <NavigationProperty Name="Personal" Relationship="RecursosHumanosModel.FK_Personal_CBiotecnologicas" FromRole="CBiotecnologicas" ToRole="PersonalRH" />
+        </EntityType>
+        <EntityType Name="CCientificas">
+          <Key>
+            <PropertyRef Name="Cod_CC" />
+          </Key>
+          <Property Name="Cod_CC" Type="Byte" Nullable="false" />
+          <Property Name="Nomb_CC" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BajasPers" Relationship="RecursosHumanosModel.FK_BajasPers_4__28" FromRole="CCientificas" ToRole="BajasPers" />
+          <NavigationProperty Name="Personal" Relationship="RecursosHumanosModel.FK_Personal_CCientificas" FromRole="CCientificas" ToRole="PersonalRH" />
+        </EntityType>
+        <EntityType Name="CDocente">
+          <Key>
+            <PropertyRef Name="Cod_CD" />
+          </Key>
+          <Property Name="Cod_CD" Type="Byte" Nullable="false" />
+          <Property Name="Nomb_CD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BajasPers" Relationship="RecursosHumanosModel.FK_BajasPers_5__28" FromRole="CDocente" ToRole="BajasPers" />
+          <NavigationProperty Name="Personal" Relationship="RecursosHumanosModel.FK_Personal_CDocente" FromRole="CDocente" ToRole="PersonalRH" />
+        </EntityType>
+        <EntityType Name="CTecnologicas">
+          <Key>
+            <PropertyRef Name="Cod_CT" />
+          </Key>
+          <Property Name="Cod_CT" Type="Byte" Nullable="false" />
+          <Property Name="Nomb_CT" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BajasPers" Relationship="RecursosHumanosModel.FK_BajasPers_CTecnologicas" FromRole="CTecnologicas" ToRole="BajasPers" />
+          <NavigationProperty Name="Personal" Relationship="RecursosHumanosModel.FK_Personal_CTecnologicas" FromRole="CTecnologicas" ToRole="PersonalRH" />
+        </EntityType>
+        <Association Name="FK_BajasPers_CBiotecnologicas">
+          <End Type="RecursosHumanosModel.CBiotecnologicas" Role="CBiotecnologicas" Multiplicity="0..1" />
+          <End Type="RecursosHumanosModel.BajasPers" Role="BajasPers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CBiotecnologicas">
+              <PropertyRef Name="Cod_CBT" />
+            </Principal>
+            <Dependent Role="BajasPers">
+              <PropertyRef Name="CategBTecno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_CBiotecnologicas">
+          <End Type="RecursosHumanosModel.CBiotecnologicas" Role="CBiotecnologicas" Multiplicity="0..1" />
+          <End Type="RecursosHumanosModel.PersonalRH" Role="PersonalRH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CBiotecnologicas">
+              <PropertyRef Name="Cod_CBT" />
+            </Principal>
+            <Dependent Role="PersonalRH">
+              <PropertyRef Name="CategBTecno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BajasPers_4__28">
+          <End Type="RecursosHumanosModel.CCientificas" Role="CCientificas" Multiplicity="0..1" />
+          <End Type="RecursosHumanosModel.BajasPers" Role="BajasPers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CCientificas">
+              <PropertyRef Name="Cod_CC" />
+            </Principal>
+            <Dependent Role="BajasPers">
+              <PropertyRef Name="CategCient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_CCientificas">
+          <End Type="RecursosHumanosModel.CCientificas" Role="CCientificas" Multiplicity="0..1" />
+          <End Type="RecursosHumanosModel.PersonalRH" Role="PersonalRH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CCientificas">
+              <PropertyRef Name="Cod_CC" />
+            </Principal>
+            <Dependent Role="PersonalRH">
+              <PropertyRef Name="CategCient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BajasPers_5__28">
+          <End Type="RecursosHumanosModel.CDocente" Role="CDocente" Multiplicity="0..1" />
+          <End Type="RecursosHumanosModel.BajasPers" Role="BajasPers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CDocente">
+              <PropertyRef Name="Cod_CD" />
+            </Principal>
+            <Dependent Role="BajasPers">
+              <PropertyRef Name="CategDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_CDocente">
+          <End Type="RecursosHumanosModel.CDocente" Role="CDocente" Multiplicity="0..1" />
+          <End Type="RecursosHumanosModel.PersonalRH" Role="PersonalRH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CDocente">
+              <PropertyRef Name="Cod_CD" />
+            </Principal>
+            <Dependent Role="PersonalRH">
+              <PropertyRef Name="CategDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BajasPers_CTecnologicas">
+          <End Type="RecursosHumanosModel.CTecnologicas" Role="CTecnologicas" Multiplicity="0..1" />
+          <End Type="RecursosHumanosModel.BajasPers" Role="BajasPers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CTecnologicas">
+              <PropertyRef Name="Cod_CT" />
+            </Principal>
+            <Dependent Role="BajasPers">
+              <PropertyRef Name="CategTecno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_CTecnologicas">
+          <End Type="RecursosHumanosModel.CTecnologicas" Role="CTecnologicas" Multiplicity="0..1" />
+          <End Type="RecursosHumanosModel.PersonalRH" Role="PersonalRH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CTecnologicas">
+              <PropertyRef Name="Cod_CT" />
+            </Principal>
+            <Dependent Role="PersonalRH">
+              <PropertyRef Name="CategTecno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RecursosHumanosModelStoreContainer" CdmEntityContainer="RecursosHumanosEntities">
+          <EntitySetMapping Name="Agrupaciones">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.Agrupaciones">
+              <MappingFragment StoreEntitySet="Agrupaciones">
+                <ScalarProperty Name="Id_Agrup" ColumnName="Id_Agrup" />
+                <ScalarProperty Name="Nom_Agrup" ColumnName="Nom_Agrup" />
+                <ScalarProperty Name="BaseDatos" ColumnName="BaseDatos" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="Produce" ColumnName="Produce" />
+                <ScalarProperty Name="Id_Scta" ColumnName="Id_Scta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COcupacional">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.COcupacional">
+              <MappingFragment StoreEntitySet="COcupacional">
+                <ScalarProperty Name="Cod_CO" ColumnName="Cod_CO" />
+                <ScalarProperty Name="Nomb_CO" ColumnName="Nomb_CO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamentos">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.Departamentos">
+              <MappingFragment StoreEntitySet="Departamentos">
+                <ScalarProperty Name="Id_Dpto" ColumnName="Id_Dpto" />
+                <ScalarProperty Name="Id_Agrup" ColumnName="Id_Agrup" />
+                <ScalarProperty Name="Nom_Dpto" ColumnName="Nom_Dpto" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personal">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.PersonalRH">
+              <MappingFragment StoreEntitySet="Personal">
+                <ScalarProperty Name="Exp" ColumnName="Exp" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+                <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+                <ScalarProperty Name="CarneId" ColumnName="CarneId" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Mpio" ColumnName="Mpio" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Clasificacion" ColumnName="Clasificacion" />
+                <ScalarProperty Name="Profesion" ColumnName="Profesion" />
+                <ScalarProperty Name="CategOcup" ColumnName="CategOcup" />
+                <ScalarProperty Name="CategDoc" ColumnName="CategDoc" />
+                <ScalarProperty Name="CategCient" ColumnName="CategCient" />
+                <ScalarProperty Name="CategTecno" ColumnName="CategTecno" />
+                <ScalarProperty Name="GradoCient" ColumnName="GradoCient" />
+                <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
+                <ScalarProperty Name="CategBTecno" ColumnName="CategBTecno" />
+                <ScalarProperty Name="Militancia" ColumnName="Militancia" />
+                <ScalarProperty Name="Curriculum" ColumnName="Curriculum" />
+                <ScalarProperty Name="IdPlaza" ColumnName="IdPlaza" />
+                <ScalarProperty Name="Alta" ColumnName="Alta" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Contrata" ColumnName="Contrata" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Antiguedad" ColumnName="Antiguedad" />
+                <ScalarProperty Name="ContabilidadC" ColumnName="ContabilidadC" />
+                <ScalarProperty Name="Dirigente" ColumnName="Dirigente" />
+                <ScalarProperty Name="GCientifico" ColumnName="GCientifico" />
+                <ScalarProperty Name="GElectrogeno" ColumnName="GElectrogeno" />
+                <ScalarProperty Name="Fotolector" ColumnName="Fotolector" />
+                <ScalarProperty Name="EstudiosTerminados" ColumnName="EstudiosTerminados" />
+                <ScalarProperty Name="Raza" ColumnName="Raza" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plantilla">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.Plantilla">
+              <MappingFragment StoreEntitySet="Plantilla">
+                <ScalarProperty Name="Cod_Plaza" ColumnName="Cod_Plaza" />
+                <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+                <ScalarProperty Name="GSalarial" ColumnName="GSalarial" />
+                <ScalarProperty Name="Basico" ColumnName="Basico" />
+                <ScalarProperty Name="Condiciones" ColumnName="Condiciones" />
+                <ScalarProperty Name="Plus" ColumnName="Plus" />
+                <ScalarProperty Name="Resolucion" ColumnName="Resolucion" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="MNomina" ColumnName="MNomina" />
+                <ScalarProperty Name="Vacante" ColumnName="Vacante" />
+                <ScalarProperty Name="CTecnica" ColumnName="CTecnica" />
+                <ScalarProperty Name="EspecialistaP" ColumnName="EspecialistaP" />
+                <ScalarProperty Name="CTecnologica" ColumnName="CTecnologica" />
+                <ScalarProperty Name="RCITMA" ColumnName="RCITMA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BajasPers">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.BajasPers">
+              <MappingFragment StoreEntitySet="BajasPers">
+                <ScalarProperty Name="Exp" ColumnName="Exp" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+                <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+                <ScalarProperty Name="CarneId" ColumnName="CarneId" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Mpio" ColumnName="Mpio" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Clasificacion" ColumnName="Clasificacion" />
+                <ScalarProperty Name="Profesion" ColumnName="Profesion" />
+                <ScalarProperty Name="CategOcup" ColumnName="CategOcup" />
+                <ScalarProperty Name="CategDoc" ColumnName="CategDoc" />
+                <ScalarProperty Name="CategCient" ColumnName="CategCient" />
+                <ScalarProperty Name="CategTecno" ColumnName="CategTecno" />
+                <ScalarProperty Name="GradoCient" ColumnName="GradoCient" />
+                <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
+                <ScalarProperty Name="CategBTecno" ColumnName="CategBTecno" />
+                <ScalarProperty Name="Militancia" ColumnName="Militancia" />
+                <ScalarProperty Name="Baja" ColumnName="Baja" />
+                <ScalarProperty Name="Alta" ColumnName="Alta" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="IdPlaza" ColumnName="IdPlaza" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="Contrata" ColumnName="Contrata" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Antiguedad" ColumnName="Antiguedad" />
+                <ScalarProperty Name="ContabilidadC" ColumnName="ContabilidadC" />
+                <ScalarProperty Name="Dirigente" ColumnName="Dirigente" />
+                <ScalarProperty Name="GCientifico" ColumnName="GCientifico" />
+                <ScalarProperty Name="Gelectrogeno" ColumnName="Gelectrogeno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GCientifico">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.GCientifico">
+              <MappingFragment StoreEntitySet="GCientifico">
+                <ScalarProperty Name="Cuantia" ColumnName="Cuantia" />
+                <ScalarProperty Name="Des_GC" ColumnName="Des_GC" />
+                <ScalarProperty Name="Cod_GC" ColumnName="Cod_GC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plazas">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.Plazas">
+              <MappingFragment StoreEntitySet="Plazas">
+                <ScalarProperty Name="Nom_Ocup" ColumnName="Nom_Ocup" />
+                <ScalarProperty Name="Id_Ocup" ColumnName="Id_Ocup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BajaPlantilla">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.BajaPlantilla">
+              <MappingFragment StoreEntitySet="BajaPlantilla">
+                <ScalarProperty Name="RCITMA" ColumnName="RCITMA" />
+                <ScalarProperty Name="CTecnologica" ColumnName="CTecnologica" />
+                <ScalarProperty Name="EspecialistaP" ColumnName="EspecialistaP" />
+                <ScalarProperty Name="CTecnica" ColumnName="CTecnica" />
+                <ScalarProperty Name="MNomina" ColumnName="MNomina" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Resolucion" ColumnName="Resolucion" />
+                <ScalarProperty Name="Plus" ColumnName="Plus" />
+                <ScalarProperty Name="Condiciones" ColumnName="Condiciones" />
+                <ScalarProperty Name="Basico" ColumnName="Basico" />
+                <ScalarProperty Name="GSalarial" ColumnName="GSalarial" />
+                <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+                <ScalarProperty Name="Cod_Plaza" ColumnName="Cod_Plaza" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Municipios">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.Municipios">
+              <MappingFragment StoreEntitySet="Municipios">
+                <ScalarProperty Name="C_Municipio" ColumnName="C_Municipio" />
+                <ScalarProperty Name="Nomb_Mpio" ColumnName="Nomb_Mpio" />
+                <ScalarProperty Name="Cod_Mpio" ColumnName="Cod_Mpio" />
+                <ScalarProperty Name="Id_Prov" ColumnName="Id_Prov" />
+                <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CBiotecnologicas">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.CBiotecnologicas">
+              <MappingFragment StoreEntitySet="CBiotecnologicas">
+                <ScalarProperty Name="Nomb_CBT" ColumnName="Nomb_CBT" />
+                <ScalarProperty Name="Cod_CBT" ColumnName="Cod_CBT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CCientificas">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.CCientificas">
+              <MappingFragment StoreEntitySet="CCientificas">
+                <ScalarProperty Name="Nomb_CC" ColumnName="Nomb_CC" />
+                <ScalarProperty Name="Cod_CC" ColumnName="Cod_CC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CDocente">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.CDocente">
+              <MappingFragment StoreEntitySet="CDocente">
+                <ScalarProperty Name="Nomb_CD" ColumnName="Nomb_CD" />
+                <ScalarProperty Name="Cod_CD" ColumnName="Cod_CD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTecnologicas">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.CTecnologicas">
+              <MappingFragment StoreEntitySet="CTecnologicas">
+                <ScalarProperty Name="Nomb_CT" ColumnName="Nomb_CT" />
+                <ScalarProperty Name="Cod_CT" ColumnName="Cod_CT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
